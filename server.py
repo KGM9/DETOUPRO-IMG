@@ -28,15 +28,17 @@ def remove_background():
 
     if 'file' not in request.files: 
         return jsonify({"error": "Aucun fichier détecté"}), 400
-    
     try:
-        response = requests.post(API_URL, data=request.files['file'].read(), timeout=30)
+        # Envoi de la requête avec un en-tête qui aide l'API à mieux traiter l'image
+        headers = {"Content-Type": "application/octet-stream"}
+        response = requests.post(API_URL, headers=headers, data=request.files['file'].read(), timeout=60)
+        
         if response.status_code == 200:
             compteur_du_jour += 1
             return send_file(io.BytesIO(response.content), mimetype='image/png')
-        return jsonify({"error": "L'IA est occupée"}), 503
-    except Exception as e:
-        return jsonify({"error": "Erreur serveur", "details": str(e)}), 500
+        else:
+            # On renvoie l'erreur réelle pour comprendre pourquoi ça bloque
+            return jsonify({"error": f"Erreur IA: {response.status_code}", "details": response.text}), 500
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=10000)
