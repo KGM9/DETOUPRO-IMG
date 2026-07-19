@@ -1,7 +1,0 @@
-body { font-family: 'Segoe UI', sans-serif; background-color: #f4f4f9; text-align: center; padding: 20px; }
-.container { max-width: 800px; margin: auto; background: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
-.hidden { display: none; }
-.preview-area { display: flex; justify-content: center; gap: 40px; margin-top: 30px; flex-wrap: wrap; }
-img { max-width: 350px; border: 2px solid #ddd; border-radius: 8px; }
-#download-btn { display: inline-block; margin-top: 25px; padding: 12px 25px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; }
-#loading { margin: 20px; font-weight: bold; color: #555; }
