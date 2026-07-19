@@ -1,5 +1,5 @@
 // URL de ton serveur final sur Render
-const SERVEUR_URL = "https://detoupro-img.onrender.com/remove-bg";
+const SERVEUR_URL = "https://detoupro-img.onrender.com";
 
 const fileInput = document.getElementById('file-input');
 const originalPreview = document.getElementById('original-preview');
