@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Détourage Photo IA</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Détourage Photo IA</h1>
+        <p class="subtitle">Service Gratuit — Détourage rapide</p>
+
+        <!-- Zone d'alerte si les 100 détourages du jour sont atteints -->
+        <div id="quota-alert" class="alert hidden"></div>
+
+        <div class="upload-section">
+            <input type="file" id="file-input" accept="image/*">
+            <label for="file-input" class="btn-upload">Choisir une image</label>
+        </div>
+
+        <div class="preview-section">
+            <div class="box">
+                <h3>Originale</h3>
+                <img id="original-preview" src="#" alt="Aperçu" class="hidden">
+            </div>
+            <div class="box">
+                <h3>Résultat</h3>
+                <div id="loading" class="hidden">Détourage en cours...</div>
+                <img id="result-preview" src="#" alt="Résultat" class="hidden">
+            </div>
+        </div>
+
+        <div class="action-buttons">
+            <a id="download-btn" class="btn-download disabled" download="image_detouree.png">Télécharger</a>
+            <button id="bonus-ad-btn" class="btn-bonus">Soutenir (Vidéo)</button>
+        </div>
+    </div>
+
+    <!-- ZONE DE SÉCURITÉ : Point d'ancrage pour injecter la publicité Web -->
+    <div id="ad-container-web"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>
