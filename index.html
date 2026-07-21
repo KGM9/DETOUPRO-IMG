@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Détourage Photo IA Professionnel</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#4f46e5">
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <h1>DétourPro IA</h1>
+            <p>Le studio pro de suppression d'arrière-plan en un clic</p>
+        </header>
+
+        <main class="app-main">
+            <div class="upload-section">
+                <label for="file-input" class="custom-upload-btn">
+                    <span class="icon">📁</span> Sélectionner une photo
+                </label>
+                <input type="file" id="file-input" accept="image/*" />
+            </div>
+
+            <div id="loading" class="loading-box hidden">
+                <div class="spinner"></div>
+                <p>L'intelligence artificielle détoure votre image...</p>
+            </div>
+
+            <div class="workspace-grid">
+                <div class="preview-card">
+                    <div class="card-header">Image Originale</div>
+                    <div class="image-wrapper">
+                        <img id="original-preview" class="hidden" alt="Aperçu original">
+                    </div>
+                </div>
+                
+                <div class="preview-card">
+                    <div class="card-header">Résultat Détouré</div>
+                    <div class="image-wrapper checkerboard">
+                        <img id="result-preview" class="hidden" alt="Aperçu détouré">
+                    </div>
+                </div>
+            </div>
+
+            <div id="ad-container" class="ad-box hidden">
+                <div class="ad-badge">Publicité</div>
+                <div class="ad-content">
+                    <p>Merci d'utiliser notre outil gratuit. Votre téléchargement est prêt ci-dessous !</p>
+                </div>
+            </div>
+
+            <div class="action-section">
+                <a id="download-btn" class="download-btn hidden" href="#" download="image-detouree.png">
+                    📥 Télécharger en Haute Définition
+                </a>
+            </div>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js')
+                    .then(reg => console.log('Service Worker enregistré !'))
+                    .catch(err => console.log('Erreur SW:', err));
+            });
+        }
+    </script>
+</body>
+</html>

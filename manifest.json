@@ -1,0 +1,24 @@
+{
+  "name": "Détourage Photo IA Professionnel",
+  "short_name": "DétourPro",
+  "description": "Application de niveau professionnel exploitant l'intelligence artificielle avancée pour isoler vos sujets et supprimer les arrière-plans instantanément.",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#4f46e5",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "icon.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon2.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
