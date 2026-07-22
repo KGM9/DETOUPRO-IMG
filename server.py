@@ -5,12 +5,15 @@ import io
 import os
 
 app = Flask(__name__)
-# Autoriser les requêtes CORS depuis ta PWA GitHub Pages
 CORS(app, resources={r"/*": {"origins": "*"}})
 
-# Charger le modèle IA ultra-léger en mémoire locale
-# u2netp est optimisé pour les serveurs gratuits à mémoire limitée
+# Initialisation de la session IA ultra-légère
 session = new_session("u2netp")
+
+@app.route('/', methods=['GET'])
+def health_check():
+    # Route pour indiquer à Render que le serveur est bien vivant
+    return "Serveur DétourPro Opérationnel", 200
 
 @app.route('/remove-bg', methods=['POST'])
 def remove_background():
@@ -19,16 +22,12 @@ def remove_background():
         
     file = request.files['file']
     if file.filename == '':
-        return jsonify({"error": "Nom de fichier vide"}), 400
+        return jsonify({"error": "Fichier vide"}), 400
 
     try:
-        # 1. Lecture directe des données de l'image
         input_bytes = file.read()
-        
-        # 2. Détourage IA exécuté en LOCAL sur ton serveur Python (Pas d'Internet / Pas de DNS)
         output_bytes = remove(input_bytes, session=session)
         
-        # 3. Renvoi direct du PNG détouré
         return send_file(
             io.BytesIO(output_bytes),
             mimetype='image/png',
@@ -37,7 +36,7 @@ def remove_background():
 
     except Exception as e:
         print(f"Erreur interne : {str(e)}")
-        return jsonify({"error": "Erreur lors du traitement local", "details": str(e)}), 500
+        return jsonify({"error": "Erreur serveur", "details": str(e)}), 500
 
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 10000))
